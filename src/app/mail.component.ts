@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   moduleId: module.id,
@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   templateUrl: 'mail.component.html',
   styleUrls: ['mail.component.css']
 })
-export class MailApp {
+export class MailAppCmp {
   title = 'mail works!';
 }

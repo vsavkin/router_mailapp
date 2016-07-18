@@ -10,7 +10,7 @@
 //   async, inject
 // } from '@angular/core/testing';
 //
-// import { ConversationComponent } from './conversation.component';
+// import { ConversationComponent } from './messages.component';
 //
 // describe('Component: Conversation', () => {
 //   it('should create an instance', () => {

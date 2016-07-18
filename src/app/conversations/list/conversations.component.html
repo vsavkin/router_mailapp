@@ -1,0 +1,5 @@
+ {{ folder | async }}
+
+<div *ngFor="let c of conversations|async">
+  {{c.title}}
+</div>

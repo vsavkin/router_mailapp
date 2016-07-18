@@ -1,3 +1,3 @@
 export {environment} from './environment';
-export {MailApp} from './mail.component';
-export {MailModule} from './mail.appmodule';
+export {MailModule} from './mail.module';
+export {MailAppCmp} from './mail.component';

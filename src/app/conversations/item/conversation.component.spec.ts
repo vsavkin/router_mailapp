@@ -10,11 +10,11 @@
 //   async, inject
 // } from '@angular/core/testing';
 //
-// import { ConversationsComponent } from './conversations.component';
+// import { ConversationComponent } from './messages.component';
 //
-// describe('Component: Conversations', () => {
+// describe('Component: Conversation', () => {
 //   it('should create an instance', () => {
-//     let component = new ConversationsComponent();
+//     let component = new ConversationComponent();
 //     expect(component).toBeTruthy();
 //   });
 // });

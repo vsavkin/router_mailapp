@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   moduleId: module.id,
@@ -6,6 +6,5 @@ import { Component } from '@angular/core';
   templateUrl: 'conversation.component.html',
   styleUrls: ['conversation.component.css']
 })
-export class Conversation {
-
+export class ConversationCmp {
 }
