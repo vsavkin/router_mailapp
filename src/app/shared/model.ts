@@ -14,7 +14,8 @@ export type Conversation = {
   id: number,
   title: string,
   user: User;
-  messages: number[]
+  messages: number[],
+  folder: string
 };
 
 export type Message = {
@@ -29,7 +30,7 @@ export type AuthToken = string;
 export class ConversationsRepo {
   static users = [
     { id: 0, name: 'Victor', email: 'victors@example.com' },
-    { id: 1, name: 'Kate', email: 'kates@example.com' },
+    { id: 1, name: 'Kate', email: 'katez@example.com' },
     { id: 2, name: 'Someone Else', email: 'someoneelse@example.com' }
   ];
 
@@ -38,13 +39,22 @@ export class ConversationsRepo {
       id: 0,
       user: ConversationsRepo.users[0],
       title: "The Myth of Sisyphus",
-      messages: [0, 1]
+      messages: [0, 1],
+      folder: 'inbox'
     },
     {
       id: 1,
       user: ConversationsRepo.users[1],
       title: "The Nicomachean Ethics",
-      messages: [2, 3]
+      messages: [2, 3],
+      folder: 'inbox'
+    },
+    {
+      id: 2,
+      user: ConversationsRepo.users[0],
+      title: 'A Fraft Conversation',
+      messages: [4],
+      folder: 'drafts'
     }
   ];
 
@@ -73,11 +83,17 @@ export class ConversationsRepo {
       title: 'Re: Virtue as the Mean',
       body: 'He means it as "intermediate", a virtue lies between excess and defect',
       user:  ConversationsRepo.users[2]
+    },
+    {
+      id: 4,
+      title: 'Draft Message',
+      body: 'Draft Message Body',
+      user:  ConversationsRepo.users[0]
     }
   ];
 
   conversations(folder: string): Observable<Conversation[]> {
-    return of(ConversationsRepo.conversations);
+    return of(ConversationsRepo.conversations.filter(c => c.folder === folder));
   }
 
   conversation(id: number): Observable<Conversation> {
