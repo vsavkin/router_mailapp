@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 @Component({
   moduleId: module.id,
   selector: 'mail-app',
-  templateUrl: 'mail.component.html',
-  styleUrls: ['mail.component.css']
+  templateUrl: 'mail.html',
+  styleUrls: ['mail.css']
 })
 export class MailAppCmp {}

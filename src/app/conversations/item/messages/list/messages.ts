@@ -6,8 +6,8 @@ import {Message} from '../../../../shared/model';
 @Component({
   moduleId: module.id,
   selector: 'app-messages',
-  templateUrl: 'messages.component.html',
-  styleUrls: ['messages.component.css']
+  templateUrl: 'messages.html',
+  styleUrls: ['messages.css']
 })
 export class MessagesCmp {
   messages: Observable<Message[]>;

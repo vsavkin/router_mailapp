@@ -7,8 +7,8 @@ import 'rxjs/add/operator/pluck';
 @Component({
   moduleId: module.id,
   selector: 'conversation',
-  templateUrl: 'conversation.component.html',
-  styleUrls: ['conversation.component.css']
+  templateUrl: 'conversation.html',
+  styleUrls: ['conversation.css']
 })
 export class ConversationCmp {
   conversation: Observable<Conversation>;

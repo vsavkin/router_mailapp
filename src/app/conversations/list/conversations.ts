@@ -7,8 +7,8 @@ import {Observable} from 'rxjs/Observable';
 @Component({
   moduleId: module.id,
   selector: 'conversations',
-  templateUrl: 'conversations.component.html',
-  styleUrls: ['conversations.component.css']
+  templateUrl: 'conversations.html',
+  styleUrls: ['conversations.css']
 })
 export class ConversationsCmp {
   folder: Observable<string>;
