@@ -2,6 +2,9 @@
 
 <ul>
   <li *ngFor="let c of conversations|async">
-    {{c.title}} <span class="light">{{c.user.name}} [{{c.user.email}}]</span>
+    <a [routerLink]="[c.id]">
+      {{c.title}}
+    </a>
+    <span class="light">{{c.user.name}} [{{c.user.email}}]</span>
   </li>
 </ul>
