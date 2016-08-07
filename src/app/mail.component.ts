@@ -6,6 +6,4 @@ import {Component} from '@angular/core';
   templateUrl: 'mail.component.html',
   styleUrls: ['mail.component.css']
 })
-export class MailAppCmp {
-  title = 'mail works!';
-}
+export class MailAppCmp {}
