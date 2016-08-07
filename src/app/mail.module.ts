@@ -34,6 +34,7 @@ const routes = [
 // clang-format on
 
 @NgModule({
+  declarations: [],
   providers: [
     ConversationsRepo,
     {

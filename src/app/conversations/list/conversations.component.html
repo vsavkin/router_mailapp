@@ -1,5 +1,7 @@
 <h2>Folder: {{ folder | async }}</h2>
 
-<div *ngFor="let c of conversations|async">
-  {{c.title}}
-</div>
+<ul>
+  <li *ngFor="let c of conversations|async">
+    {{c.title}} <span class="light">{{c.user.name}} [{{c.user.email}}]</span>
+  </li>
+</ul>
