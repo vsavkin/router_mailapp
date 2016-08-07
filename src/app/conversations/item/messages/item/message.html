@@ -1,3 +1,16 @@
-<p>
-  message works!
-</p>
+<ul>
+  <li *ngFor="let m of messages | async">
+    <div *ngIf="m.id === message.id">
+      <h3>{{message.title}} <span class="light">by {{m.user.name}} [{{m.user.email}}]</span></h3>
+      <p>
+        {{message.body}}
+      </p>
+    </div>
+    <div *ngIf="m.id !== message.id">
+      <a [routerLink]="['../', m.id]">
+        {{m.title}}
+      </a>
+      <span class="light">by {{m.user.name}} [{{m.user.email}}]</span>
+    </div>
+  </li>
+</ul>

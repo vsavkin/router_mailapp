@@ -1,5 +1,8 @@
 <ul>
-  <li *ngFor="let m of messages | async" [routerLink]="['../messages', m.id]">
-    {{m.title}} by <span class="light">{{m.user.name}} [{{m.user.email}}]</span>
+  <li *ngFor="let m of messages | async">
+    <a [routerLink]="['../messages', m.id]">
+      {{m.title}}
+    </a>
+     <span class="light">by {{m.user.name}} [{{m.user.email}}]</span>
   </li>
 </ul>

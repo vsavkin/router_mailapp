@@ -6,7 +6,6 @@ import {Observable} from 'rxjs/Observable';
 
 @Component({
   moduleId: module.id,
-  selector: 'conversations',
   templateUrl: 'conversations.html',
   styleUrls: ['conversations.css']
 })

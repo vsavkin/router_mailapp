@@ -6,7 +6,6 @@ import 'rxjs/add/operator/pluck';
 
 @Component({
   moduleId: module.id,
-  selector: 'conversation',
   templateUrl: 'conversation.html',
   styleUrls: ['conversation.css']
 })

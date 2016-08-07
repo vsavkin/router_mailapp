@@ -5,7 +5,6 @@ import {Message} from '../../../../shared/model';
 
 @Component({
   moduleId: module.id,
-  selector: 'app-messages',
   templateUrl: 'messages.html',
   styleUrls: ['messages.css']
 })
