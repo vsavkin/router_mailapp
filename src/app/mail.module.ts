@@ -1,10 +1,10 @@
-import {NgModule} from '@angular/core';
+import {NgModule, Provider} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
 import {RouterModule, provideRoutes} from '@angular/router';
 import 'rxjs/add/operator/mergeMap';
 
-import {ConversationsRepo} from './shared/model';
+import {Repo} from './shared/model';
 import {MailAppCmp} from './mail';
 import {ConversationCmp, ConversationsCmp, MessageCmp, MessagesCmp} from './conversations/index';
 
@@ -27,7 +27,7 @@ const routes = [
           {
             path: '',
             component: MessagesCmp,
-            resolve: { messages: 'messagesResolver' },
+            resolve: { messages: 'messagesResolver'},
           },
           {
             path: 'messages/:id',
@@ -42,18 +42,19 @@ const routes = [
 // clang-format on
 
 // helper to generate a resolver
+
 function resolver(name: string, fn: Function): any {
   return {
     provide: name,
     useFactory: (repo) => (route) => fn(repo, route),
-    deps: [ConversationsRepo]
+    deps: [Repo]
   };
 }
 
 @NgModule({
   declarations: [],
   providers: [
-    ConversationsRepo,
+    Repo,
     resolver('conversationsResolver', (repo, route) => repo.conversations(route.params.folder)),
     resolver('conversationResolver', (repo, route) => repo.conversation(route.params.id)),
     resolver('messagesResolver', (repo, route) => {
