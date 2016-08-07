@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {Conversation} from '../../shared/conversations_repo';
+import {Conversation} from '../../shared/model';
 import 'rxjs/add/operator/pluck';
 import {Observable} from 'rxjs/Observable';
 

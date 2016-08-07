@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
-import {Message} from '../../../../shared/conversations_repo';
+import {Message} from '../../../../shared/model';
 
 @Component({
   moduleId: module.id,

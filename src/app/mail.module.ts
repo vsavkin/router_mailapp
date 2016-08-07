@@ -3,7 +3,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
 import {RouterModule, provideRoutes} from '@angular/router';
 
-import {ConversationsRepo} from './shared/conversations_repo';
+import {ConversationsRepo} from './shared/model';
 import {MailAppCmp} from './mail.component';
 import {ConversationCmp, ConversationsCmp, MessageCmp, MessagesCmp} from './conversations/index';
 
