@@ -38,13 +38,13 @@ export class ConversationsRepo {
       id: 0,
       user: ConversationsRepo.users[0],
       title: "The Myth of Sisyphus",
-      messages: [1, 2]
+      messages: [0, 1]
     },
     {
       id: 1,
       user: ConversationsRepo.users[1],
       title: "The Nicomachean Ethics",
-      messages: [3, 4]
+      messages: [2, 3]
     }
   ];
 
@@ -78,6 +78,10 @@ export class ConversationsRepo {
 
   conversations(folder: string): Observable<Conversation[]> {
     return of(ConversationsRepo.conversations);
+  }
+
+  conversation(id: number): Observable<Conversation> {
+    return of(ConversationsRepo.conversations[id]);
   }
 
   messageTitles(ids: number[]): Observable<Message[]> {

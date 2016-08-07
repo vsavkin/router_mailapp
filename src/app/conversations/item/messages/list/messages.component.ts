@@ -1,4 +1,7 @@
 import {Component} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {Observable} from 'rxjs/Observable';
+import {Message} from '../../../../shared/conversations_repo';
 
 @Component({
   moduleId: module.id,
@@ -7,4 +10,9 @@ import {Component} from '@angular/core';
   styleUrls: ['messages.component.css']
 })
 export class MessagesCmp {
+  messages: Observable<Message[]>;
+
+  constructor(route: ActivatedRoute) {
+    this.messages = route.data.pluck<Message[]>('messages');
+  }
 }

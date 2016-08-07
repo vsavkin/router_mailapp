@@ -1,3 +1,5 @@
-<p>
-  messages works!
-</p>
+<ul>
+  <li *ngFor="let m of messages | async" [routerLink]="['../messages', m.id]">
+    {{m.title}} by <span class="light">{{m.user.name}} [{{m.user.email}}]</span>
+  </li>
+</ul>
