@@ -1,4 +1,5 @@
 import {Observable} from 'rxjs/Observable';
+import {Subject} from 'rxjs/Subject';
 import {of} from 'rxjs/observable/of';
 
 /**
@@ -24,8 +25,6 @@ export type Message = {
   body: string;
   user: User;
 };
-
-export type AuthToken = string;
 
 export class Repo {
   static users = [
@@ -109,4 +108,21 @@ export class Repo {
   message(id: number): Observable<Message> {
     return of(Repo.messages[id]);
   }
+}
+
+export type Reply = {
+  type: 'reply';
+  conversationId: number;
+  payload: {
+    title: string;
+    body: string;
+  }
+};
+
+export type Action = Reply;
+
+export class Actions extends Subject<Action> {}
+
+export function reducer() {
+
 }

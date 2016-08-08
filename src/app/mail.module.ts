@@ -1,12 +1,12 @@
 import {NgModule, Provider} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {FormsModule} from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule, provideRoutes} from '@angular/router';
 import 'rxjs/add/operator/mergeMap';
 
-import {Repo} from './shared/model';
+import {Repo, Actions} from './shared/model';
 import {MailAppCmp} from './mail';
-import {ConversationCmp, ConversationsCmp, MessageCmp, MessagesCmp} from './conversations/index';
+import {ConversationCmp, ConversationsCmp, MessageCmp, MessagesCmp, ComposeCmp} from './conversations/index';
 
 // clang-format off
 const routes = [
@@ -37,6 +37,11 @@ const routes = [
         ]
       }
     ]
+  },
+  {
+    path: 'compose',
+    component: ComposeCmp,
+    outlet: 'popup'
   }
 ];
 // clang-format on
@@ -55,6 +60,7 @@ function resolver(name: string, fn: Function): any {
   declarations: [],
   providers: [
     Repo,
+    Actions,
     resolver('conversationsResolver', (repo, route) => repo.conversations(route.params.folder)),
     resolver('conversationResolver', (repo, route) => repo.conversation(route.params.id)),
     resolver('messagesResolver', (repo, route) => {
@@ -66,7 +72,7 @@ function resolver(name: string, fn: Function): any {
   ],
   imports: [
     RouterModule.forRoot(routes),
-    FormsModule,
+    ReactiveFormsModule,
     BrowserModule
   ],
   bootstrap: [MailAppCmp]
