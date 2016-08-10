@@ -1,18 +1,19 @@
 <h1>Mail App</h1>
 
-<div>
-  Folders:
-  <ul>
-    <li><a routerLink="/inbox" routerLinkActive="active">Inbox</a></li>
-    <li><a routerLink="/drafts" routerLinkActive="active">Drafts</a></li>
-  </ul>
-</div>
+<app>
+  <folder>
+    <ul class="menu">
+      <li routerLinkActive="active" routerLink="/inbox">Inbox</li>
+      <li routerLinkActive="active" routerLink="/drafts">Drafts</li>
+    </ul>
+  </folder>
 
-<router-outlet></router-outlet>
+  <content>
+    <router-outlet></router-outlet>
+  </content>
 
-<hr>
-
-<div>
-Popup:
-<router-outlet name="popup"></router-outlet>
-</div>
+  <!--<div>
+  Popup:
+  <router-outlet name="popup"></router-outlet>
+  </div>-->
+</app>

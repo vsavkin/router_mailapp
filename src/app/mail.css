@@ -1,3 +1,26 @@
-.active {
-  background-color: green;
+ul.menu {
+  list-style-type: none;
+  -webkit-padding-start: 0px;
+  cursor: pointer;
+}
+
+li {
+  padding: 10px 5px;
+}
+
+li:hover {
+  background-color: aliceblue;
+}
+
+li.active {
+  background-color: #dbe9f5;
+}
+
+app {
+  display: flex;
+}
+
+folder {
+  width: 150px;
+  margin-right: 10px;
 }

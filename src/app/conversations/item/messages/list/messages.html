@@ -1,8 +1,8 @@
-<ul>
-  <li *ngFor="let m of messages | async">
-    <a [routerLink]="['../messages', m.id]">
-      {{m.title}}
-    </a>
-     <span class="light">by {{m.user.name}} [{{m.user.email}}]</span>
-  </li>
-</ul>
+<md-list>
+  <md-list-item *ngFor="let m of messages | async">
+    <h3 md-line><a [routerLink]="['../messages', m.id]">{{m.title}}</a></h3>
+    <p md-line>
+      <span class="light">by {{m.user.name}} [{{m.user.email}}]</span>
+    </p>
+  </md-list-item>
+</md-list>
