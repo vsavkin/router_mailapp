@@ -4,7 +4,5 @@
 
 <router-outlet></router-outlet>
 
-<!--<button md-raised-button [routerLink]="[{outlets: {popup: 'compose'}}]">Reply</button>-->
-
 <button md-raised-button (click)="goUp()">←</button>
-<button md-raised-button (click)="showCompose()">Reply</button>
+<button md-raised-button [routerLink]="['/', {outlets: {popup: 'compose'}}]">Reply</button>

@@ -16,11 +16,6 @@ export class ConversationCmp {
     this.conversation = route.data.pluck<Conversation>('conversation');
   }
 
-  showCompose(): void {
-    // this is a workaround
-    this.router.navigateByUrl("/inbox/0(popup:compose)");
-  }
-
   goUp(): void {
     const folder = this.route.snapshot.parent.params['folder'];
     this.router.navigate(["/", folder]);
