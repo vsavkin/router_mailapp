@@ -22,5 +22,11 @@ app {
 
 folder {
   width: 150px;
+  flex-shrink: 0;
   margin-right: 10px;
+}
+
+content {
+  padding: 5px;
+  flex-grow: 1;
 }

@@ -1,10 +1,8 @@
-<md-list>
-  <md-list-item *ngFor="let c of conversations|async">
-    <h3 md-line>
-      <a [routerLink]="[c.id]">{{c.title}}</a>
-    </h3>
-    <p md-line>
-      <span class="light">{{c.user.name}} [{{c.user.email}}]</span>
-    </p>
-  </md-list-item>
-</md-list>
+<md-card *ngFor="let c of conversations|async" [routerLink]="[c.id]">
+  <h3>
+    <a [routerLink]="[c.id]">{{c.title}}</a>
+  </h3>
+  <p>
+    <span class="light">{{c.user.name}} [{{c.user.email}}]</span>
+  </p>
+</md-card>

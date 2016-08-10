@@ -12,12 +12,17 @@ import 'rxjs/add/operator/pluck';
 export class ConversationCmp {
   conversation: Observable<Conversation>;
 
-  constructor(route: ActivatedRoute, private router: Router) {
+  constructor(private route: ActivatedRoute, private router: Router) {
     this.conversation = route.data.pluck<Conversation>('conversation');
   }
 
   showCompose(): void {
     // this is a workaround
     this.router.navigateByUrl("/inbox/0(popup:compose)");
+  }
+
+  goUp(): void {
+    const folder = this.route.snapshot.parent.params['folder'];
+    this.router.navigate(["/", folder]);
   }
 }

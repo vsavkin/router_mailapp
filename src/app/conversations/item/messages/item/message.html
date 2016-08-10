@@ -1,16 +1,18 @@
-<ul>
-  <li *ngFor="let m of messages | async">
-    <div *ngIf="m.id === message.id">
-      <h3>{{message.title}} <span class="light">by {{m.user.name}} [{{m.user.email}}]</span></h3>
-      <p>
-        {{message.body}}
-      </p>
-    </div>
-    <div *ngIf="m.id !== message.id">
-      <a [routerLink]="['../', m.id]">
-        {{m.title}}
-      </a>
+<md-card *ngFor="let m of messages | async" [ngClass]="{selected: m.id === message.id}" [routerLink]="['../../messages', m.id]">
+  <div *ngIf="m.id === message.id">
+    <h3>{{m.title}}</h3>
+    <p>
       <span class="light">by {{m.user.name}} [{{m.user.email}}]</span>
-    </div>
-  </li>
-</ul>
+    </p>
+    <p>
+      {{message.body}}
+    </p>
+  </div>
+
+  <div *ngIf="m.id !== message.id">
+    <h3><a [routerLink]="['../../messages', m.id]">{{m.title}}</a></h3>
+    <p>
+      <span class="light">by {{m.user.name}} [{{m.user.email}}]</span>
+    </p>
+  </div>
+</md-card>
