@@ -1,6 +1,6 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <div>
-    Title: <input formControlName="title" required>
+    Title: <md-input formControlName="title" required></md-input>
     <span *ngIf="form.get('title').touched && form.hasError('required', 'title')">
       required
     </span>

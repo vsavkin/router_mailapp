@@ -2,6 +2,13 @@ import {NgModule, Provider} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule, provideRoutes} from '@angular/router';
+
+import {MdButtonModule} from '@angular2-material/button';
+import {MdCardModule} from '@angular2-material/card';
+import {MdSidenavModule} from '@angular2-material/sidenav';
+import {MdInputModule} from '@angular2-material/input';
+import {MdListModule} from '@angular2-material/list';
+
 import 'rxjs/add/operator/mergeMap';
 
 import {Repo, Actions} from './shared/model';
@@ -73,7 +80,12 @@ function resolver(name: string, fn: Function): any {
   imports: [
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
-    BrowserModule
+    BrowserModule,
+    MdCardModule,
+    MdButtonModule,
+    MdSidenavModule,
+    MdInputModule,
+    MdListModule
   ],
   bootstrap: [MailAppCmp]
 })
