@@ -18,6 +18,8 @@
 
   "files": [
     "main.ts",
-    "typings.d.ts"
+    "app/integration.spec.ts",
+    "typings.d.ts",
+    "../node_modules/@types/jasmine/index.d.ts"
   ]
 }
