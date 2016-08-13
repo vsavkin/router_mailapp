@@ -64,7 +64,7 @@ function resolver(name: string, fn: Function): any {
 }
 
 @NgModule({
-  declarations: [],
+  declarations: [MailAppCmp, ConversationCmp, ConversationsCmp, MessageCmp, MessagesCmp, ComposeCmp],
   providers: [
     Repo,
     Actions,
