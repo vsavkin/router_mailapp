@@ -1,19 +1,20 @@
-import {NgModule, Provider} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
-import {ReactiveFormsModule} from '@angular/forms';
-import {RouterModule, provideRoutes} from '@angular/router';
-
-import {MdButtonModule} from '@angular2-material/button';
-import {MdCardModule} from '@angular2-material/card';
-import {MdSidenavModule} from '@angular2-material/sidenav';
-import {MdInputModule} from '@angular2-material/input';
-import {MdListModule} from '@angular2-material/list';
-
 import 'rxjs/add/operator/mergeMap';
 
-import {Repo, Actions} from './shared/model';
+import {NgModule, Provider} from '@angular/core';
+import {ReactiveFormsModule} from '@angular/forms';
+import {BrowserModule} from '@angular/platform-browser';
+import {RouterModule, provideRoutes} from '@angular/router';
+import {MdButtonModule} from '@angular2-material/button';
+import {MdCardModule} from '@angular2-material/card';
+import {MdInputModule} from '@angular2-material/input';
+import {MdListModule} from '@angular2-material/list';
+import {MdSidenavModule} from '@angular2-material/sidenav';
+import {of } from 'rxjs/observable/of';
+
+import {ComposeCmp, ConversationCmp, ConversationsCmp, MessageCmp, MessagesCmp} from './conversations/index';
 import {MailAppCmp} from './mail';
-import {ConversationCmp, ConversationsCmp, MessageCmp, MessagesCmp, ComposeCmp} from './conversations/index';
+import {Actions, Repo} from './shared/model';
+
 
 // clang-format off
 const routes = [
@@ -54,38 +55,23 @@ const routes = [
 // clang-format on
 
 // helper to generate a resolver
-
 function resolver(name: string, fn: Function): any {
-  return {
-    provide: name,
-    useFactory: (repo) => (route) => fn(repo, route),
-    deps: [Repo]
-  };
+  return {provide: name, useFactory: (repo) => (route) => of (fn(repo, route)), deps: [Repo]};
 }
 
 @NgModule({
-  declarations: [MailAppCmp, ConversationCmp, ConversationsCmp, MessageCmp, MessagesCmp, ComposeCmp],
+  declarations:
+      [MailAppCmp, ConversationCmp, ConversationsCmp, MessageCmp, MessagesCmp, ComposeCmp],
   providers: [
-    Repo,
-    Actions,
+    Repo, Actions,
     resolver('conversationsResolver', (repo, route) => repo.conversations(route.params.folder)),
-    resolver('conversationResolver', (repo, route) => repo.conversation(route.params.id)),
-    resolver('messagesResolver', (repo, route) => {
-      //TODO: we should be able to use the parent's resolved data
-      return repo.conversation(route.parent.params.id).
-        mergeMap(c => repo.messageTitles(c.messages));
-    }),
-    resolver('messageResolver', (repo, route) => repo.message(route.params.id))
+    resolver('conversationResolver', (repo, route) => repo.conversation(+route.params.id)),
+    resolver('messagesResolver', (repo, route) => repo.messageTitles(+route.parent.params.id)),
+    resolver('messageResolver', (repo, route) => repo.message(+route.params.id))
   ],
   imports: [
-    RouterModule.forRoot(routes),
-    ReactiveFormsModule,
-    BrowserModule,
-    MdCardModule,
-    MdButtonModule,
-    MdSidenavModule,
-    MdInputModule,
-    MdListModule
+    RouterModule.forRoot(routes), ReactiveFormsModule, BrowserModule, MdCardModule, MdButtonModule,
+    MdSidenavModule, MdInputModule, MdListModule
   ],
   bootstrap: [MailAppCmp]
 })

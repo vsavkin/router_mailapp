@@ -1,4 +1,4 @@
-<md-card *ngFor="let m of messages | async" [ngClass]="{selected: m.id === message.id}" [routerLink]="['../../messages', m.id]">
+<md-card *ngFor="let m of messages | async" [ngClass]="{selected: m.id === (message|async).id}" [routerLink]="['../../messages', m.id]">
   <div *ngIf="m.id === message.id">
     <h3>{{m.title}}</h3>
     <p>
