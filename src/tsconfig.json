@@ -7,7 +7,7 @@
     "mapRoot": "",
     "module": "commonjs",
     "moduleResolution": "node",
-    "noEmitOnError": true,
+    "noEmitOnError": false,
     "noImplicitAny": false,
     "outDir": "../dist/",
     "rootDir": ".",
