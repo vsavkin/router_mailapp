@@ -19,6 +19,7 @@
   "files": [
     "main.ts",
     "app/integration.spec.ts",
+    "app/conversations/list/conversations.spec.ts",
     "typings.d.ts",
     "../node_modules/@types/jasmine/index.d.ts"
   ]

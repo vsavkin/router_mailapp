@@ -16,7 +16,7 @@ export function addMatchers() {
   });
 }
 
-function elementText(n: any): string {
+export function elementText(n: any): string {
   var hasNodes = (n: any) => {
     const children = n.childNodes;
     return children && children.length > 0;
