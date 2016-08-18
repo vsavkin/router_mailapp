@@ -20,6 +20,7 @@
     "main.ts",
     "app/integration.spec.ts",
     "app/conversations/list/conversations.spec.ts",
+    "app/conversations/compose/compose.spec.ts",
     "typings.d.ts",
     "../node_modules/@types/jasmine/index.d.ts"
   ]

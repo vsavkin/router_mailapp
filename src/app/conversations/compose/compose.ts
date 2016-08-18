@@ -12,10 +12,10 @@ export class ComposeCmp {
   form =
       new FormGroup({title: new FormControl('', Validators.required), body: new FormControl('')});
 
-  constructor(private router: Router, private actions: Actions) {}
+  constructor(private route: ActivatedRoute, private router: Router, private actions: Actions) {}
 
   onSubmit() {
-    const conversationRoute = this.router.routerState.snapshot.root.firstChild.firstChild;
+    const conversationRoute = this.route.snapshot.root.firstChild.firstChild;
     const conversationId = +conversationRoute.params['id'];
 
     this.actions.next({

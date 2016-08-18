@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, SkipSelf, SecurityContext } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, SecurityContext } from '@angular/core';
 import { inject, getTestBed, TestBed, async, fakeAsync, tick, ComponentFixture } from '@angular/core/testing';
 import { Router, provideRoutes, ActivatedRoute, RouterModule } from '@angular/router';
 import { Location } from '@angular/common';
@@ -11,6 +11,12 @@ import {MailModule} from '../../mail.module';
 import {of} from 'rxjs/observable/of';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
+/**
+ * This is an example of a "shallow" test.
+ * We render a component without rendering any of its children.
+ *
+ * TODO: remove AllowAllElementSchemaRegistry
+ */
 describe('ConversationsCmp', () => {
   let conversations: BehaviorSubject<any>;
 
@@ -26,12 +32,11 @@ describe('ConversationsCmp', () => {
     const data = new BehaviorSubject<any>({conversations});
 
     TestBed.configureCompiler({
-      providers: [{ provide: ElementSchemaRegistry, useClass: ElementSchemaRegistryWrapper }]
+      providers: [{ provide: ElementSchemaRegistry, useClass: AllowAllElementSchemaRegistry }]
     })
 
     TestBed.configureTestingModule({
       declarations: [ConversationsCmp],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
       providers: [
         { provide: ActivatedRoute, useValue: {params, data} }
       ]
@@ -61,7 +66,7 @@ describe('ConversationsCmp', () => {
   }));
 });
 
-export class ElementSchemaRegistryWrapper implements ElementSchemaRegistry {
+export class AllowAllElementSchemaRegistry implements ElementSchemaRegistry {
   hasProperty(tagName: string, propName: string, schemaMetas: any): boolean {
     return true;
   }

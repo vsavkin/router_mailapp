@@ -7,6 +7,10 @@ import { SpyLocation } from '@angular/common/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import {addMatchers, advance} from './spec_utils';
 
+/**
+ * This is an example of an integration test where we use the router, which will
+ * render the tree of components.
+ */
 describe('integration specs', () => {
   let router: Router;
   let location: SpyLocation;
