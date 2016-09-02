@@ -33,7 +33,15 @@ const barrels: string[] = [
 ];
 
 const cliSystemConfigPackages: any = {};
-barrels.forEach((barrelName: string) => { cliSystemConfigPackages[barrelName] = {main: 'index'}; });
+barrels.forEach((barrelName: string) => {
+  if (barrelName.startsWith("@angular")) {
+    const b = barrelName.split("/");
+    const m = b[1];
+    cliSystemConfigPackages[barrelName] = {main: `bundles/${m}.umd`};
+  } else {
+    cliSystemConfigPackages[barrelName] = {main: 'index'};
+  }
+});
 
 /** Type declaration for ambient System. */
 declare var System: any;

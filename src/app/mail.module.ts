@@ -15,6 +15,8 @@ import {ComposeCmp, ConversationCmp, ConversationsCmp, MessageCmp, MessagesCmp} 
 import {MailAppCmp} from './mail';
 import {Actions, Repo} from './shared/model';
 
+import 'rxjs/add/operator/map';
+
 
 // clang-format off
 const routes = [
@@ -71,7 +73,7 @@ function resolver(name: string, fn: Function): any {
   ],
   imports: [
     RouterModule.forRoot(routes), ReactiveFormsModule, BrowserModule, MdCardModule, MdButtonModule,
-    MdSidenavModule, MdInputModule, MdListModule
+    MdInputModule, MdListModule
   ],
   bootstrap: [MailAppCmp]
 })

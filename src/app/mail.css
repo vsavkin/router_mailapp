@@ -16,11 +16,11 @@ li.active {
   background-color: #dbe9f5;
 }
 
-app {
+div.app {
   display: flex;
 }
 
-folder {
+div.folder {
   width: 150px;
   flex-shrink: 0;
   margin-right: 10px;
