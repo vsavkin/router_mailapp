@@ -1,3 +1,7 @@
+# SHAMEER's CHANGES
+* package.json modified to use the latest packages.
+* system-config.ts modified to use the latest bundling.
+
 # Angular 2 Router Book Example Application
 
 ## Book
