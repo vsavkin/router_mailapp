@@ -17,11 +17,6 @@ export function addMatchers() {
 }
 
 export function elementText(n: any): string {
-  var hasNodes = (n: any) => {
-    const children = n.childNodes;
-    return children && children.length > 0;
-  };
-
   if (n instanceof Array) {
     return n.map(elementText).join('');
   }

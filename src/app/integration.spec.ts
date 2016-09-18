@@ -1,6 +1,6 @@
 import { MailModule } from './mail.module';
 import { MailAppCmp } from './mail';
-import { inject, getTestBed, TestBed, async, fakeAsync, tick, ComponentFixture } from '@angular/core/testing';
+import { getTestBed, TestBed, async, fakeAsync, ComponentFixture } from '@angular/core/testing';
 import { Router, provideRoutes } from '@angular/router';
 import { Location } from '@angular/common';
 import { SpyLocation } from '@angular/common/testing';

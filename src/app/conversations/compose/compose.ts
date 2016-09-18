@@ -3,9 +3,9 @@ import 'rxjs/add/operator/pluck';
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Observable} from 'rxjs/Observable';
 
-import {Actions, Conversation} from '../../shared/model';
+import {Actions} from '../../shared/model';
+
 
 @Component({templateUrl: 'compose.html', styleUrls: ['compose.css']})
 export class ComposeCmp {

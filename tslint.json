@@ -9,7 +9,6 @@
       "check-space"
     ],
     "curly": true,
-    "eofline": true,
     "forin": true,
     "indent": [
       true,
@@ -42,7 +41,7 @@
     "no-duplicate-key": true,
     "no-duplicate-variable": true,
     "no-empty": false,
-    "no-eval": true,
+    // "no-eval": true,
     "no-inferrable-types": true,
     "no-shadowed-variable": true,
     "no-string-literal": false,
@@ -54,17 +53,6 @@
     "no-use-before-declare": true,
     "no-var-keyword": true,
     "object-literal-sort-keys": false,
-    "one-line": [
-      true,
-      "check-open-brace",
-      "check-catch",
-      "check-else",
-      "check-whitespace"
-    ],
-    "quotemark": [
-      true,
-      "single"
-    ],
     "radix": true,
     "semicolon": [
       "always"
@@ -84,29 +72,12 @@
       }
     ],
     "variable-name": false,
-    "whitespace": [
-      true,
-      "check-branch",
-      "check-decl",
-      "check-operator",
-      "check-separator",
-      "check-type"
-    ],
-
-    "directive-selector-prefix": [true, "app"],
-    "component-selector-prefix": [true, "app"],
-    "directive-selector-name": [true, "camelCase"],
-    "component-selector-name": [true, "kebab-case"],
-    "directive-selector-type": [true, "attribute"],
-    "component-selector-type": [true, "element"],
     "use-input-property-decorator": true,
     "use-output-property-decorator": true,
     "use-host-property-decorator": true,
     "no-input-rename": true,
     "no-output-rename": true,
     "use-life-cycle-interface": true,
-    "use-pipe-transform-interface": true,
-    "component-class-suffix": true,
-    "directive-class-suffix": true
+    "use-pipe-transform-interface": true
   }
 }

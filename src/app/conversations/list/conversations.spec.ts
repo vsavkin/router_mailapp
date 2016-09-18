@@ -1,13 +1,8 @@
-import { CUSTOM_ELEMENTS_SCHEMA, SecurityContext } from '@angular/core';
-import { inject, getTestBed, TestBed, async, fakeAsync, tick, ComponentFixture } from '@angular/core/testing';
-import { Router, provideRoutes, ActivatedRoute, RouterModule } from '@angular/router';
-import { Location } from '@angular/common';
-import { ElementSchemaRegistry } from '@angular/compiler';
-import { SpyLocation } from '@angular/common/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import {addMatchers, advance, elementText} from '../../spec_utils';
+import { TestBed, async, fakeAsync } from '@angular/core/testing';
+import { ActivatedRoute } from '@angular/router';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import {addMatchers, advance } from '../../spec_utils';
 import {ConversationsCmp} from './conversations';
-import {MailModule} from '../../mail.module';
 import {of} from 'rxjs/observable/of';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
@@ -31,15 +26,12 @@ describe('ConversationsCmp', () => {
     const params = of({folder: 'inbox'});
     const data = new BehaviorSubject<any>({conversations});
 
-    TestBed.configureCompiler({
-      providers: [{ provide: ElementSchemaRegistry, useClass: AllowAllElementSchemaRegistry }]
-    })
-
     TestBed.configureTestingModule({
       declarations: [ConversationsCmp],
       providers: [
         { provide: ActivatedRoute, useValue: {params, data} }
-      ]
+      ],
+      schemas: [NO_ERRORS_SCHEMA]
     });
 
     TestBed.compileComponents();
@@ -65,21 +57,3 @@ describe('ConversationsCmp', () => {
     expect(f.debugElement.nativeElement).toHaveText('Title3');
   }));
 });
-
-export class AllowAllElementSchemaRegistry implements ElementSchemaRegistry {
-  hasProperty(tagName: string, propName: string, schemaMetas: any): boolean {
-    return true;
-  }
-
-  securityContext(tagName: string, propName: string): any {
-    return SecurityContext.NONE;
-  }
-
-  getMappedPropName(propName: string): string {
-    return propName;
-  }
-
-  getDefaultComponentElementName(): string {
-    return "DIV";
-  }
-}
