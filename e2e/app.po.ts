@@ -1,9 +1,11 @@
-export class BookPage {
+import { browser, element, by } from 'protractor/globals';
+
+export class BooknewPage {
   navigateTo() {
     return browser.get('/');
   }
 
   getParagraphText() {
-    return element(by.css('book-app h1')).getText();
+    return element(by.css('app-root h1')).getText();
   }
 }

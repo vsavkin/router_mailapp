@@ -1,7 +1,9 @@
-import {enableProdMode} from '@angular/core';
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import './polyfills.ts';
 
-import {MailModule, environment} from './app/';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { enableProdMode } from '@angular/core';
+import { environment } from './environments/environment';
+import { MailModule } from './app/';
 
 if (environment.production) {
   enableProdMode();

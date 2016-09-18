@@ -8,7 +8,7 @@ import {Observable} from 'rxjs/Observable';
 import {Conversation} from '../../shared/model';
 
 @Component(
-    {moduleId: module.id, templateUrl: 'conversations.html', styleUrls: ['conversations.css']})
+    {templateUrl: 'conversations.html', styleUrls: ['conversations.css']})
 export class ConversationsCmp {
   folder: Observable<string>;
   conversations: Observable<Conversation[]>;

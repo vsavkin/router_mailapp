@@ -7,7 +7,7 @@ import {Observable} from 'rxjs/Observable';
 
 import {Actions, Conversation} from '../../shared/model';
 
-@Component({moduleId: module.id, templateUrl: 'compose.html', styleUrls: ['compose.css']})
+@Component({templateUrl: 'compose.html', styleUrls: ['compose.css']})
 export class ComposeCmp {
   form =
       new FormGroup({title: new FormControl('', Validators.required), body: new FormControl('')});
