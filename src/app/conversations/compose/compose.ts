@@ -7,7 +7,10 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Actions} from '../../shared/model';
 
 
-@Component({templateUrl: 'compose.html', styleUrls: ['compose.css']})
+@Component({
+  templateUrl: 'compose.html',
+  styleUrls: ['compose.css']
+})
 export class ComposeCmp {
   form =
       new FormGroup({title: new FormControl('', Validators.required), body: new FormControl('')});
