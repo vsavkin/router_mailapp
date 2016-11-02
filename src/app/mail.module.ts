@@ -4,9 +4,7 @@ import {NgModule, Provider} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 import {RouterModule, provideRoutes} from '@angular/router';
-import {MdButtonModule} from '@angular2-material/button';
-import {MdCardModule} from '@angular2-material/card';
-import {MdInputModule} from '@angular2-material/input';
+import {MaterialModule} from '@angular/material';
 import {of } from 'rxjs/observable/of';
 
 import {ComposeCmp, ConversationCmp, ConversationsCmp, MessageCmp, MessagesCmp} from './conversations/index';
@@ -70,8 +68,7 @@ function resolver(name: string, fn: Function): any {
     resolver('messageResolver', (repo, route) => repo.message(+route.params.id))
   ],
   imports: [
-    RouterModule.forRoot(routes), ReactiveFormsModule, BrowserModule, MdCardModule, MdButtonModule,
-    MdInputModule
+    RouterModule.forRoot(routes), ReactiveFormsModule, BrowserModule, MaterialModule
   ],
   bootstrap: [MailAppCmp]
 })
