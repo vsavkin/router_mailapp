@@ -1,8 +1,8 @@
-# Angular 2 Router Book Example Application
+# Angular Router Book Example Application
 
 ## Book
 
-You can find the Angular 2 Router book [here](https://leanpub.com/router). The book is a comprehensive guide to the Angular 2 router written by its designer.
+You can find the Angular Router book [here](https://leanpub.com/router). The book is a comprehensive guide to the Angular 2 router written by its designer.
 
 It goes far beyond a "getting started" tutorial and explores the library in depth, including the mental model, design constraints, subtleties of the API, and more. It reveals deep insights into why the router works the way it does.
 
