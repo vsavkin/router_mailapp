@@ -8,8 +8,8 @@ import {Actions} from '../../shared/model';
 
 
 @Component({
-  templateUrl: 'compose.html',
-  styleUrls: ['compose.css']
+  templateUrl: './compose.html',
+  styleUrls: ['./compose.css']
 })
 export class ComposeCmp {
   form =

@@ -8,14 +8,14 @@ import {Observable} from 'rxjs/Observable';
 import {Conversation} from '../../shared/model';
 
 @Component({
-  templateUrl: 'conversation.html',
-  styleUrls: ['conversation.css']
+  templateUrl: './conversation.html',
+  styleUrls: ['./conversation.css']
 })
 export class ConversationCmp {
   conversation: Observable<Conversation>;
 
   constructor(private route: ActivatedRoute, private router: Router) {
-    this.conversation = route.data.pluck<any>('conversation').mergeAll();
+    this.conversation = route.data.pluck('conversation');
   }
 
   goUp(): void {

@@ -7,13 +7,13 @@ import {Observable} from 'rxjs/Observable';
 import {Message} from '../../../../shared/model';
 
 @Component({
-  templateUrl: 'messages.html',
-  styleUrls: ['messages.css']
+  templateUrl: './messages.html',
+  styleUrls: ['./messages.css']
 })
 export class MessagesCmp {
   messages: Observable<Message[]>;
 
   constructor(route: ActivatedRoute) {
-    this.messages = route.data.pluck<any>('messages').mergeAll();
+    this.messages = (<any>route.data.pluck('messages')).mergeAll();
   }
 }

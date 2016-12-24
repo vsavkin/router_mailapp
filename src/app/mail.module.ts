@@ -1,11 +1,10 @@
 import 'rxjs/add/operator/mergeMap';
 
-import {NgModule, Provider} from '@angular/core';
+import {NgModule} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
-import {RouterModule, provideRoutes} from '@angular/router';
+import {RouterModule, ActivatedRouteSnapshot} from '@angular/router';
 import {MaterialModule} from '@angular/material';
-import {of } from 'rxjs/observable/of';
 
 import {ComposeCmp, ConversationCmp, ConversationsCmp, MessageCmp, MessagesCmp} from './conversations/index';
 import {MailAppCmp} from './mail';
@@ -52,9 +51,20 @@ const routes = [
 ];
 // clang-format on
 
-// helper to generate a resolver
-function resolver(name: string, fn: Function): any {
-  return {provide: name, useFactory: (repo) => (route) => of (fn(repo, route)), deps: [Repo]};
+export function conversationsResolver(repo: Repo) {
+  return (route: ActivatedRouteSnapshot) => repo.conversations(route.params['folder']);
+}
+
+export function conversationResolver(repo: Repo) {
+  return (route: ActivatedRouteSnapshot) => repo.conversation(+route.params['id']);
+}
+
+export function messagesResolver(repo: Repo) {
+  return (route: ActivatedRouteSnapshot) =>  repo.messageTitles(+route.parent.params['id']);
+}
+
+export function messageResolver(repo: Repo) {
+  return (route: ActivatedRouteSnapshot) => repo.message(+route.params['id']);
 }
 
 @NgModule({
@@ -62,13 +72,13 @@ function resolver(name: string, fn: Function): any {
       [MailAppCmp, ConversationCmp, ConversationsCmp, MessageCmp, MessagesCmp, ComposeCmp],
   providers: [
     Repo, Actions,
-    resolver('conversationsResolver', (repo, route) => repo.conversations(route.params.folder)),
-    resolver('conversationResolver', (repo, route) => repo.conversation(+route.params.id)),
-    resolver('messagesResolver', (repo, route) => repo.messageTitles(+route.parent.params.id)),
-    resolver('messageResolver', (repo, route) => repo.message(+route.params.id))
+    {provide: 'conversationsResolver', useFactory: conversationsResolver, deps: [Repo]},
+    {provide: 'conversationResolver', useFactory: conversationResolver, deps: [Repo]},
+    {provide: 'messagesResolver', useFactory: messagesResolver, deps: [Repo]},
+    {provide: 'messageResolver', useFactory: messageResolver, deps: [Repo]}
   ],
   imports: [
-    RouterModule.forRoot(routes), ReactiveFormsModule, BrowserModule, MaterialModule
+    RouterModule.forRoot(routes, {enableTracing: true}), ReactiveFormsModule, BrowserModule, MaterialModule.forRoot()
   ],
   bootstrap: [MailAppCmp]
 })

@@ -1,5 +1,5 @@
 import 'rxjs/add/operator/scan';
-import 'rxjs/add/operator/take';
+import 'rxjs/add/operator/first';
 import 'rxjs/add/operator/zip';
 import 'rxjs/add/operator/skip';
 
@@ -7,6 +7,7 @@ import {Injectable} from '@angular/core';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Observable} from 'rxjs/Observable';
 import {Subject} from 'rxjs/Subject';
+import {of} from "rxjs/observable/of";
 
 
 /**
@@ -101,20 +102,20 @@ export class Repo {
     this.setUpEffects(actions);
   }
 
-  conversations(folder: string): Observable<Conversation[]> {
-    return this.state.map(s => s.conversations.filter(c => c.folder === folder));
+  conversations(folder: string): Observable<Observable<Conversation[]>> {
+    return of(this.state.map(s => s.conversations.filter(c => c.folder === folder)));
   }
 
   conversation(id: number): Observable<Conversation> {
-    return this.state.map(s => s.conversations.filter(c => c.id === id)[0]).take(1);
+    return this.state.map(s => s.conversations.filter(c => c.id === id)[0]).first();
   }
 
-  messageTitles(conversationId: number): Observable<Message[]> {
-    return this.state.map(s => s.messages.filter(m => m.conversationId === conversationId));
+  messageTitles(conversationId: number): Observable<Observable<Message[]>> {
+    return of(this.state.map(s => s.messages.filter(m => m.conversationId === conversationId)));
   }
 
   message(id: number): Observable<Message> {
-    return this.state.map(s => s.messages.filter(m => m.id === id)[0]).take(1);
+    return this.state.map(s => s.messages.filter(m => m.id === id)[0]).first();
   }
 
   private setUpEffects(actions: Actions) {
